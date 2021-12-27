@@ -1,0 +1,33 @@
+name: djs
+description: An absolute bare-bones web app.
+version: 0.0.1
+#homepage: https://www.example.com
+#author: Kevin Moore <email@example.com>
+
+environment:
+  sdk: '>=1.20.1 <2.0.0'
+
+dependencies:
+  js: any
+  json_serializable: ^0.2.0
+
+dev_dependencies:
+  browser: ^0.10.0
+  build_runner: ^0.4.0
+  dart_to_js_script_rewriter: ^1.0.1
+  source_gen: '^0.7.0'
+
+transformers:
+- dart_to_js_script_rewriter
+- $dart2js:
+    minify: false
+    commandLineOptions:
+      - --show-package-warnings
+      - --dump-info
+      - --no-frequency-based-minification
+      - --trust-type-annotations
+      - --trust-primitives
+      - --fast-startup
+web:
+  compiler:
+    debug: dartdevc
